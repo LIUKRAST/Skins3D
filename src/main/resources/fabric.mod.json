@@ -1,0 +1,38 @@
+{
+  "schemaVersion": 1,
+  "id": "skins3d",
+  "version": "${version}",
+
+  "name": "Skins 3D",
+  "description": "Makes skin layers 3D but not cubic",
+  "authors": [
+    "LiukRast"
+  ],
+  "contact": {
+    "homepage": "https://fabricmc.net/",
+    "sources": "https://github.com/FabricMC/fabric-example-mod"
+  },
+
+  "license": "CC0-1.0",
+  "icon": "assets/modid/icon.png",
+
+  "environment": "*",
+  "entrypoints": {
+    "main": [
+      "net.frozenblock.skins3d.Main"
+    ]
+  },
+  "mixins": [
+    "skins3d.mixins.json"
+  ],
+
+  "depends": {
+    "fabricloader": ">=0.11.3",
+    "fabric": "*",
+    "minecraft": "1.18.x",
+    "java": ">=17"
+  },
+  "suggests": {
+    "another-mod": "*"
+  }
+}

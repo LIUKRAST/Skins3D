@@ -1,0 +1,15 @@
+{
+  "required": true,
+  "minVersion": "0.8",
+  "package": "net.frozenblock.skins3d.mixins",
+  "compatibilityLevel": "JAVA_16",
+  "mixins": [
+  ],
+  "client": [
+    "PlayerEntityModelMixin",
+    "SkullEntityModelMixin"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}
