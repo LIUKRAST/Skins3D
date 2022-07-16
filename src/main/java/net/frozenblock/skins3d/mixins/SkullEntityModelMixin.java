@@ -1,7 +1,5 @@
 package net.frozenblock.skins3d.mixins;
 
-import net.fabricmc.fabric.api.entity.event.v1.EntityElytraEvents;
-import net.frozenblock.skins3d.Config;
 import net.frozenblock.skins3d.Skins3D;
 import net.frozenblock.skins3d.model.CustomPlayerModel;
 import net.minecraft.client.model.*;
@@ -26,7 +24,7 @@ public class SkullEntityModelMixin {
                         CustomPlayerModel.layering(1, new Dilation(0), 32, 0, -4.0f, -8.0f, -4.0f, 8.0f, 8.0f, 8.0f)
                         , ModelTransform.NONE);
 
-        if(Skins3D.configRes2) {
+        if (Skins3D.configRes2) {
             cir.setReturnValue(TexturedModelData.of(modelData, 64, 64));
         }
     }

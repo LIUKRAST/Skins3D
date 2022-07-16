@@ -2,7 +2,6 @@ package net.frozenblock.skins3d.model;
 
 import net.frozenblock.skins3d.Skins3D;
 import net.minecraft.client.model.*;
-import net.minecraft.client.render.entity.model.BipedEntityModel;
 import net.minecraft.client.render.entity.model.EntityModelPartNames;
 
 public class CustomPlayerModel {
@@ -67,8 +66,8 @@ public class CustomPlayerModel {
 
     public static ModelPartBuilder layering(int amount, Dilation dilation, int textureX, int textureY, float offsetX, float offsetY, float offsetZ, float sizeX, float sizeY, float sizeZ) {
         ModelPartBuilder LAYER = ModelPartBuilder.create();
-        for(int i = amount * Skins3D.configRes3; i > 0; i--) {
-            float dil = ((float)i / 100) * (25/(float)Skins3D.configRes3);
+        for (int i = amount * Skins3D.configRes3; i > 0; i--) {
+            float dil = ((float) i / 100) * (25 / (float) Skins3D.configRes3);
             LAYER.uv(textureX, textureY).cuboid(offsetX, offsetY, offsetZ, sizeX, sizeY, sizeZ, dilation.add(dil));
         }
         return LAYER;

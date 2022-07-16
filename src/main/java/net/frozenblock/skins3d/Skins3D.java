@@ -3,7 +3,6 @@ package net.frozenblock.skins3d;
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.loader.api.FabricLoader;
 
-import java.io.IOException;
 import java.nio.file.Path;
 import java.util.Objects;
 

@@ -2,7 +2,6 @@ package net.frozenblock.skins3d.mixins;
 
 import net.frozenblock.skins3d.Config;
 import net.frozenblock.skins3d.Skins3D;
-import net.minecraft.resource.ReloadableResourceManager;
 import net.minecraft.resource.ReloadableResourceManagerImpl;
 import net.minecraft.resource.ResourcePack;
 import net.minecraft.resource.ResourceReload;
@@ -12,7 +11,6 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
-import java.io.IOException;
 import java.util.List;
 import java.util.Objects;
 import java.util.concurrent.CompletableFuture;
