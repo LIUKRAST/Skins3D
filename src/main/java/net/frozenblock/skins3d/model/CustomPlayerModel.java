@@ -6,6 +6,7 @@ import net.minecraft.client.render.entity.model.EntityModelPartNames;
 
 public class CustomPlayerModel {
 
+    public static final String FACE = "face";
     private static final String EAR = "ear";
     private static final String CLOAK = "cloak";
     private static final String LEFT_SLEEVE = "left_sleeve";
@@ -14,10 +15,14 @@ public class CustomPlayerModel {
     private static final String RIGHT_PANTS = "right_pants";
 
     public static ModelData getCustomPlayerBasicShape(Dilation dilation, float pivotOffsetY) {
-        ModelData modelData = new ModelData();
-        ModelPartData modelPartData = modelData.getRoot();
+        final ModelData modelData = new ModelData();
+        final ModelPartData modelPartData = modelData.getRoot();
 
         modelPartData.addChild(EntityModelPartNames.HEAD, ModelPartBuilder.create().uv(0, 0).cuboid(-4.0f, -8.0f, -4.0f, 8.0f, 8.0f, 8.0f, dilation), ModelTransform.pivot(0.0f, 0.0f + pivotOffsetY, 0.0f));
+        final ModelPartData c = !Skins3D.configRes4 ? modelPartData : modelPartData.addChild("face_root", ModelPartBuilder.create(), ModelTransform.pivot(0.0f, 0.0f + pivotOffsetY, 0.0f));
+        c.addChild(FACE,
+                ModelPartBuilder.create().uv(24, 0)
+                        .cuboid(-4.0f, -8.0f, 4.05f * (Skins3D.configRes4 ? 1 : -1), 8.0f, 8.0f, 0, dilation), ModelTransform.pivot(0.0f, 0.0f + pivotOffsetY, 0.0f));
 
         modelPartData.addChild(EntityModelPartNames.HAT,
                 layering(2, dilation, 32, 0, -4.0f, -8.0f, -4.0f, 8.0f, 8.0f, 8.0f)

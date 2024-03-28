@@ -4,12 +4,12 @@
   "version": "${version}",
 
   "name": "Skins 3D",
-  "description": "Makes skin layers 3D but not cubic",
+  "description": "Makes skin layers 3D, but not as usual!",
   "authors": [
     "LiukRast"
   ],
   "contact": {
-    "homepage": "https://fabricmc.net/",
+    "homepage": "https://frozenblock.net",
     "sources": "https://github.com/LIUKRAST/Skins3D"
   },
 
@@ -31,8 +31,5 @@
     "fabric": "*",
     "minecraft": "1.19.x",
     "java": ">=17"
-  },
-  "suggests": {
-    "another-mod": "*"
   }
 }

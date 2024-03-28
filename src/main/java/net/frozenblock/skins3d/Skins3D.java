@@ -11,6 +11,7 @@ public class Skins3D implements ModInitializer {
     public static boolean configRes1;
     public static boolean configRes2;
     public static int configRes3;
+    public static boolean configRes4 = false;
 
     public static final Path CONFIG_PATH = FabricLoader.getInstance().getConfigDir().resolve("liukrast3dskins.json");
 

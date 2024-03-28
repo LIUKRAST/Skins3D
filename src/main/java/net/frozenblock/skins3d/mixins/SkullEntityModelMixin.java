@@ -16,7 +16,7 @@ import java.io.IOException;
 public class SkullEntityModelMixin {
 
     @Inject(at = @At("RETURN"), method = "getHeadTexturedModelData", cancellable = true)
-    private static void getHead(CallbackInfoReturnable<TexturedModelData> cir) throws IOException {
+    private static void getHead(CallbackInfoReturnable<TexturedModelData> cir) {
         ModelData modelData = SkullEntityModel.getModelData();
         ModelPartData modelPartData = modelData.getRoot();
         modelPartData.getChild(EntityModelPartNames.HEAD)

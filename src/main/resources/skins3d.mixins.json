@@ -7,8 +7,9 @@
   ],
   "client": [
     "PlayerEntityModelMixin",
-    "SkullEntityModelMixin",
-    "ReloadableResourceManagerImplMixin"
+    "PlayerSkinTextureMixin",
+    "ReloadableResourceManagerImplMixin",
+    "SkullEntityModelMixin"
   ],
   "injectors": {
     "defaultRequire": 1
