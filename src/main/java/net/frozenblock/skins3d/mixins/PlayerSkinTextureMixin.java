@@ -8,13 +8,16 @@ import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 @Mixin(PlayerSkinTexture.class)
-public class PlayerSkinTextureMixin {
+public final class PlayerSkinTextureMixin {
+    private PlayerSkinTextureMixin() {}
 
     @Inject(at = @At("HEAD"), method = "stripAlpha", cancellable = true)
-    private static void onStrip(NativeImage image, int x1, int y1, int x2, int y2, CallbackInfo ci) {
-        if(x1 == 0 && y1 == 0) {
-            ci.cancel();
-        }
-
+    private static void onStrip(final NativeImage image,
+                                final int x1,
+                                final int y1,
+                                final int x2,
+                                final int y2,
+                                final CallbackInfo ci) {
+        if(x1 == 0 && y1 == 0) ci.cancel();
     }
 }

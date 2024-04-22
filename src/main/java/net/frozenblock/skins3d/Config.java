@@ -4,49 +4,33 @@ import java.io.*;
 import java.nio.file.Files;
 import java.util.Properties;
 
-public class Config {
+import static net.frozenblock.skins3d.Skins3D.logger;
+
+public final class Config {
+    private Config() {}
 
     public static void createConfig() {
-
-        try (OutputStream output = new FileOutputStream(String.valueOf(Skins3D.CONFIG_PATH))) {
-            Properties prop = new Properties();
+        try (final OutputStream output = new FileOutputStream(String.valueOf(Skins3D.CONFIG_PATH))) {
+            final Properties prop = new Properties();
             prop.setProperty("player", "true");
             prop.setProperty("player.heads", "true");
             prop.setProperty("resolution", "25");
             prop.store(output, null);
-        } catch (IOException io) {
-            io.printStackTrace();
+        } catch (final IOException ex) {
+            logger.error(ex.getMessage());
         }
     }
-
-    public static Object getConfig(String property) {
-        if (!Files.exists(Skins3D.CONFIG_PATH)) {
-            createConfig();
-        } else {
-            try (InputStream input = new FileInputStream(String.valueOf(Skins3D.CONFIG_PATH))) {
-                Properties prop = new Properties();
-
+    public static Object getConfig(final String property) {
+        if (!Files.exists(Skins3D.CONFIG_PATH)) createConfig();
+        else {
+            try (final InputStream input = new FileInputStream(String.valueOf(Skins3D.CONFIG_PATH))) {
+                final Properties prop = new Properties();
                 prop.load(input);
-
                 return prop.getProperty(property);
-            } catch (IOException ex) {
-                ex.printStackTrace();
+            } catch (final IOException ex) {
+                logger.error(ex.getMessage());
             }
         }
         return null;
-    }
-
-    public static Object getFixedConfig(String property) {
-        if (getConfig(property) == null) {
-            if (Files.exists(Skins3D.CONFIG_PATH)) {
-                try {
-                    Files.delete(Skins3D.CONFIG_PATH);
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-            }
-            createConfig();
-        }
-        return getConfig(property);
     }
 }

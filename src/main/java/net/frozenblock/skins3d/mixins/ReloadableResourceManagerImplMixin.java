@@ -17,9 +17,13 @@ import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.Executor;
 
 @Mixin(ReloadableResourceManagerImpl.class)
-public class ReloadableResourceManagerImplMixin {
+public final class ReloadableResourceManagerImplMixin {
     @Inject(at = @At("HEAD"), method = "reload")
-    private void reload(Executor prepareExecutor, Executor applyExecutor, CompletableFuture<Unit> initialStage, List<ResourcePack> packs, CallbackInfoReturnable<ResourceReload> cir) {
+    private void reload(final Executor prepareExecutor,
+                        final Executor applyExecutor,
+                        final CompletableFuture<Unit> initialStage,
+                        final List<ResourcePack> packs,
+                        final CallbackInfoReturnable<ResourceReload> cir) {
         Skins3D.configRes1 = Boolean.parseBoolean((String) Config.getConfig("player"));
         Skins3D.configRes2 = Boolean.parseBoolean((String) Config.getConfig("player.heads"));
         Skins3D.configRes3 = Integer.parseInt((String) Objects.requireNonNull(Config.getConfig("resolution")));

@@ -10,22 +10,26 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
-import java.io.IOException;
-
 @Mixin(SkullEntityModel.class)
-public class SkullEntityModelMixin {
+public final class SkullEntityModelMixin {
+    private SkullEntityModelMixin() {}
 
     @Inject(at = @At("RETURN"), method = "getHeadTexturedModelData", cancellable = true)
-    private static void getHead(CallbackInfoReturnable<TexturedModelData> cir) {
+    private static void getHead(final CallbackInfoReturnable<TexturedModelData> cir) {
         ModelData modelData = SkullEntityModel.getModelData();
         ModelPartData modelPartData = modelData.getRoot();
         modelPartData.getChild(EntityModelPartNames.HEAD)
                 .addChild(EntityModelPartNames.HAT,
-                        CustomPlayerModel.layering(1, new Dilation(0), 32, 0, -4.0f, -8.0f, -4.0f, 8.0f, 8.0f, 8.0f)
-                        , ModelTransform.NONE);
+                        CustomPlayerModel.layering(1, new Dilation(0),
+                                32,
+                                0,
+                                -4.0f,
+                                -8.0f,
+                                -4.0f,
+                                8.0f,
+                                8.0f,
+                                8.0f), ModelTransform.NONE);
 
-        if (Skins3D.configRes2) {
-            cir.setReturnValue(TexturedModelData.of(modelData, 64, 64));
-        }
+        if (Skins3D.configRes2) cir.setReturnValue(TexturedModelData.of(modelData, 64, 64));
     }
 }
