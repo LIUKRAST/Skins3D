@@ -4,6 +4,7 @@ import com.google.common.collect.ImmutableList;
 import com.google.common.collect.Iterables;
 import net.frozenblock.skins3d.Skins3D;
 import net.frozenblock.skins3d.model.CustomPlayerModel;
+import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.model.Dilation;
 import net.minecraft.client.model.ModelData;
 import net.minecraft.client.model.ModelPart;
@@ -49,7 +50,9 @@ public final class PlayerEntityModelMixin {
                         final float i,
                         final float j,
                         final CallbackInfo ci) {
-        face.hidden = Math.cos(time/5f + livingEntity.getUuid().variant()) < 0.95f;
+        if(MinecraftClient.getInstance().player == livingEntity && MinecraftClient.getInstance().options.getPerspective().isFirstPerson()) {
+            face.hidden = true;
+        } else face.hidden = Math.cos(time/5f + livingEntity.getUuid().variant()) < 0.95f;
         if(Skins3D.configRes4) {
             face_root.copyTransform(root.getChild("head"));
             face.yaw = (float) Math.PI;
